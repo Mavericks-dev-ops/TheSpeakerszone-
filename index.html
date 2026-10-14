@@ -57,8 +57,9 @@
                     <a href="#about" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">About</a>
                     <a href="#curriculum" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Curriculum</a>
                     <a href="#testimonials" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Testimonials</a>
+                    <a href="#register" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Register</a>
                     <a href="#pricing" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Pricing</a>
-                    <a href="https://wa.me/message/X36AXEWJA6F4K1" target="_blank" class="gold-button text-brand-dark font-semibold px-5 py-2.5 rounded-full text-sm">
+                    <a href="#register" class="gold-button text-brand-dark font-semibold px-5 py-2.5 rounded-full text-sm">
                         Enroll Now
                     </a>
                 </div>
@@ -74,8 +75,9 @@
             <a href="#about" class="block text-slate-300 hover:text-brand-gold py-2">About</a>
             <a href="#curriculum" class="block text-slate-300 hover:text-brand-gold py-2">Curriculum</a>
             <a href="#testimonials" class="block text-slate-300 hover:text-brand-gold py-2">Testimonials</a>
+            <a href="#register" class="block text-slate-300 hover:text-brand-gold py-2">Register</a>
             <a href="#pricing" class="block text-slate-300 hover:text-brand-gold py-2">Pricing</a>
-            <a href="https://wa.me/message/X36AXEWJA6F4K1" target="_blank" class="block w-full text-center gold-button text-brand-dark font-semibold py-3 rounded-full mt-4">
+            <a href="#register" class="block w-full text-center gold-button text-brand-dark font-semibold py-3 rounded-full mt-4">
                 Enroll Now
             </a>
         </div>
@@ -96,7 +98,7 @@
                 Step into <strong class="text-white">The Speaker's Zone</strong>—an intensive, practical public speaking masterclass designed to turn public speaking anxiety into articulate, commanding executive presence.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#pricing" class="w-full sm:w-auto gold-button text-brand-dark font-bold px-8 py-4 rounded-full text-lg shadow-xl">
+                <a href="#register" class="w-full sm:w-auto gold-button text-brand-dark font-bold px-8 py-4 rounded-full text-lg shadow-xl">
                     Claim Discounted Seat (₦50,000)
                 </a>
                 <a href="#quiz" class="w-full sm:w-auto glass-card text-slate-200 hover:text-brand-gold border border-amber-500/20 font-semibold px-8 py-4 rounded-full text-lg transition-all">
@@ -196,6 +198,38 @@
         </div>
     </section>
 
+    <!-- Direct Email & WhatsApp Registration Form Section -->
+    <section id="register" class="py-20 px-4 bg-slate-900/50 border-y border-amber-500/10">
+        <div class="max-w-3xl mx-auto glass-card p-8 md:p-12 rounded-3xl border border-amber-500/30">
+            <div class="text-center mb-8">
+                <span class="text-brand-gold text-xs font-semibold uppercase tracking-widest">Reserve Your Spot</span>
+                <h2 class="text-2xl md:text-4xl font-bold text-white mt-2">Quick Registration</h2>
+                <p class="text-slate-300 text-sm mt-2">Enter your name and email below. Submitting will send your details to our inbox and redirect you directly to WhatsApp to complete your registration.</p>
+            </div>
+            
+            <form id="enrollment-form" action="https://formspree.io/f/xbgdzeeq" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="e.g. Favour Bathram" class="w-full bg-slate-900/80 border border-amber-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="yourname@example.com" class="w-full bg-slate-900/80 border border-amber-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                </div>
+                <div>
+                    <label for="tier" class="block text-sm font-medium text-slate-300 mb-2">Selected Option</label>
+                    <select id="tier" name="tier" class="w-full bg-slate-900/80 border border-amber-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                        <option value="Student Special (N50,000)">Student Special (₦50,000)</option>
+                        <option value="Standard Tuition (N100,000)">Standard Tuition (₦100,000)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full gold-button text-brand-dark font-bold py-4 rounded-xl text-lg shadow-lg">
+                    Submit & Continue to WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
     <!-- Assessment Quiz -->
     <section id="quiz" class="py-20 px-4 bg-slate-900/30">
         <div class="max-w-3xl mx-auto glass-card p-8 md:p-12 rounded-3xl border border-amber-500/20">
@@ -211,8 +245,8 @@
                 <div id="quiz-result" class="hidden text-center space-y-6 pt-4">
                     <h3 class="text-2xl font-bold gold-gradient-text" id="result-title"></h3>
                     <p class="text-slate-300 text-sm leading-relaxed" id="result-desc"></p>
-                    <a href="https://wa.me/message/X36AXEWJA6F4K1" target="_blank" class="inline-block gold-button text-brand-dark font-bold px-8 py-3 rounded-full text-sm">
-                        Discuss Results With Favour on WhatsApp
+                    <a href="#register" class="inline-block gold-button text-brand-dark font-bold px-8 py-3 rounded-full text-sm">
+                        Proceed to Registration Form
                     </a>
                 </div>
             </div>
@@ -287,7 +321,7 @@
                             <li><i class="fas fa-check text-brand-gold mr-2"></i> Alumni Network Access</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/message/X36AXEWJA6F4K1" target="_blank" class="glass-card border border-amber-500/30 text-slate-200 hover:text-brand-gold font-bold py-3 rounded-full text-sm block">
+                    <a href="#register" class="glass-card border border-amber-500/30 text-slate-200 hover:text-brand-gold font-bold py-3 rounded-full text-sm block">
                         Enroll Standard (₦100k)
                     </a>
                 </div>
@@ -309,7 +343,7 @@
                             <li><i class="fas fa-check text-brand-gold mr-2"></i> Lifetime Community Access</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/message/X36AXEWJA6F4K1" target="_blank" class="gold-button text-brand-dark font-bold py-3 rounded-full text-sm block shadow-lg">
+                    <a href="#register" class="gold-button text-brand-dark font-bold py-3 rounded-full text-sm block shadow-lg">
                         Claim Student Discount (₦50k)
                     </a>
                 </div>
@@ -329,8 +363,27 @@
         </div>
     </footer>
 
-    <!-- Interactive Quiz Script -->
+    <!-- Interactive Scripts -->
     <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const tier = document.getElementById('tier').value;
+
+            // Submit form to Formspree in background
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            // Redirect to WhatsApp with pre-filled message
+            const waMessage = `Hello Favour, I want to register for The Speaker's Zone Masterclass.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Option:* ${encodeURIComponent(tier)}`;
+            window.open(`https://wa.me/message/X36AXEWJA6F4K1?text=${waMessage}`, '_blank');
+        }
+
         const quizData = [
             {
                 q: "When asked to speak unexpectedly, how do you typically feel?",
