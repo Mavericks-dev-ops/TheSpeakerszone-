@@ -3,436 +3,862 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Speaker's Zone | Masterclass & Vocal Coaching</title>
+    <title>The Speaker's Zone | Masterclass with Favour Bathram</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        'brand-gold': '#D4AF37',
-                        'brand-gold-light': '#F3E5AB',
-                        'brand-dark': '#0B0F19',
-                        'brand-card': '#161F33',
+                        brand: {
+                            dark: '#090D16',
+                            slate: '#0F172A',
+                            card: '#131A2A',
+                            border: '#1E293B',
+                            gold: '#EAB308',
+                            goldHover: '#CA8A04',
+                            goldLight: '#FEF08A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
                     }
                 }
             }
         }
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
     <style>
-        .glass-card {
-            background: rgba(22, 31, 51, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+        body {
+            background-color: #090D16;
+            color: #F8FAFC;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
+
+        /* Gold Gradient Text & Accent Styling */
         .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF0B1 0%, #D4AF37 50%, #997A15 100%);
+            background: linear-gradient(135deg, #FEF08A 0%, #EAB308 50%, #CA8A04 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .gold-button {
-            background: linear-gradient(135deg, #D4AF37 0%, #AA820A 100%);
-            transition: all 0.3s ease;
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #FEF08A 0%, #EAB308 50%, #D97706 100%);
         }
-        .gold-button:hover {
-            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+
+        .gold-glow {
+            box-shadow: 0 0 35px rgba(234, 179, 8, 0.25);
+        }
+
+        /* Subtle Glassmorphism */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(234, 179, 8, 0.4);
+            box-shadow: 0 12px 30px -10px rgba(234, 179, 8, 0.15);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090D16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EAB308;
+        }
+
+        /* Accordion transition */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+        }
+        .accordion-content.open {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in-out;
         }
     </style>
 </head>
-<body class="bg-brand-dark text-slate-100 font-sans antialiased selection:bg-brand-gold selection:text-brand-dark">
+<body class="antialiased selection:bg-brand-gold selection:text-brand-dark">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-amber-500/10">
+    <!-- TOP VERIFICATION BADGE BAR -->
+    <div class="bg-amber-500/10 border-b border-amber-500/20 text-amber-300 text-xs py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <i class="fa-solid fa-circle-check text-amber-400"></i>
+        <span>Official Landing Page hosted by <strong>Favour Bathram</strong> | 50% Student Discount Active</span>
+    </div>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="fixed top-8 left-0 w-full z-40 transition-all duration-300 backdrop-blur-lg bg-brand-dark/80 border-b border-slate-800/60" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-brand-dark font-black text-xl shadow-lg transition-transform group-hover:scale-105">
+                    <i class="fa-solid fa-crown text-slate-950"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-wider text-white uppercase font-sans">The Speaker's <span class="gold-gradient-text">Zone</span></span>
+                    <span class="text-[10px] text-slate-400 tracking-widest uppercase font-medium">By Favour Bathram</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-brand-gold transition-colors">Why TSZ</a>
+                <a href="#instructor" class="text-slate-300 hover:text-brand-gold transition-colors">Instructor</a>
+                <a href="#curriculum" class="text-slate-300 hover:text-brand-gold transition-colors">Curriculum</a>
+                <a href="#assessment" class="text-slate-300 hover:text-brand-gold transition-colors">Quiz</a>
+                <a href="#testimonials" class="text-slate-300 hover:text-brand-gold transition-colors">Testimonials</a>
+                <a href="#pricing" class="text-slate-300 hover:text-brand-gold transition-colors">Pricing</a>
+            </nav>
+
+            <!-- Direct Contact Links & CTA -->
+            <div class="flex items-center space-x-3">
+                <!-- Direct WhatsApp Link Button -->
+                <a href="https://wa.me/message/X36AXEWJA6F4K1" target="_blank" class="hidden lg:inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold hover:bg-emerald-500/20 transition-all">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp
+                </a>
+
+                <button onclick="openRegistrationModal('Navbar CTA')" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase text-brand-dark gold-gradient-bg hover:opacity-95 transition-all shadow-md hover:shadow-brand-gold/20 hover:scale-105">
+                    Enroll Now
+                </button>
+
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none p-1" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/95 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 text-center">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-brand-gold text-sm font-medium">Why TSZ</a>
+            <a href="#instructor" class="block py-2 text-slate-300 hover:text-brand-gold text-sm font-medium">Instructor</a>
+            <a href="#curriculum" class="block py-2 text-slate-300 hover:text-brand-gold text-sm font-medium">Curriculum</a>
+            <a href="#assessment" class="block py-2 text-slate-300 hover:text-brand-gold text-sm font-medium">Quiz</a>
+            <a href="#testimonials" class="block py-2 text-slate-300 hover:text-brand-gold text-sm font-medium">Testimonials</a>
+            <a href="#pricing" class="block py-2 text-slate-300 hover:text-brand-gold text-sm font-medium">Pricing</a>
+            
+            <a href="https://whatsapp.com/channel/0029Vb9SqU9CnA7ronwOKP3Q" target="_blank" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+                <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Channel
+            </a>
+            
+            <button onclick="openRegistrationModal('Mobile Nav')" class="w-full mt-2 py-3 rounded-full font-bold text-xs tracking-wider uppercase text-brand-dark gold-gradient-bg">
+                Enroll Now
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        <!-- Background Radial Grid -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-gold/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <!-- Live Batch Status & Discount Badge -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full glass-card border border-brand-gold/30 mb-8 shadow-inner text-xs">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-bold text-slate-200">Next Live Cohort Enrolling Now</span>
+                <span class="text-slate-500">|</span>
+                <span class="gold-gradient-text font-bold uppercase tracking-wider">Student Discount Available</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.12] mb-6">
+                Master the Stage. <br class="hidden sm:inline">
+                <span class="font-serif italic font-normal gold-gradient-text">Command Any Room.</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed font-light">
+                Conquer stage fright, build an irresistible vocal tone, and structure speeches that captivate audiences. Personal interactive coaching led directly by <strong>Favour Bathram</strong>.
+            </p>
+
+            <!-- Striking Price Display Banner -->
+            <div class="max-w-md mx-auto mb-10 p-4 rounded-2xl glass-card border border-brand-gold/30 flex items-center justify-between">
+                <div class="text-left">
+                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Masterclass Tuition</span>
+                    <span class="text-xs text-slate-400 line-through">₦100,000</span>
+                    <span class="text-2xl sm:text-3xl font-extrabold text-white ml-2">₦50,000</span>
+                </div>
+                <div class="px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
+                    50% Student Off
+                </div>
+            </div>
+
+            <!-- Call To Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
+                <button onclick="openRegistrationModal('Hero Main CTA')" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-sm tracking-wider uppercase text-brand-dark gold-gradient-bg hover:opacity-95 transition-all shadow-xl hover:shadow-brand-gold/25 hover:-translate-y-0.5">
+                    Claim Student Seat (₦50,000) <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </button>
+                <a href="#assessment" class="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-sm tracking-wider uppercase text-slate-300 glass-card hover:bg-slate-800/80 transition-all border border-slate-700/80">
+                    Take 1-Min Speaking Quiz
+                </a>
+            </div>
+
+            <!-- Authentic Trust Pillars -->
+            <div class="pt-10 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-extrabold gold-gradient-text mb-1">100% Practical</div>
+                    <div class="text-xs text-slate-400 font-medium">Hands-on Speeches</div>
+                </div>
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-extrabold gold-gradient-text mb-1">Direct Feedback</div>
+                    <div class="text-xs text-slate-400 font-medium">1-on-1 Speech Review</div>
+                </div>
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-extrabold gold-gradient-text mb-1">Small Cohort</div>
+                    <div class="text-xs text-slate-400 font-medium">Limited Participants</div>
+                </div>
+                <div class="p-3">
+                    <div class="text-2xl sm:text-3xl font-extrabold gold-gradient-text mb-1">Live Coaching</div>
+                    <div class="text-xs text-slate-400 font-medium">Interactive Workshops</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: INSTRUCTOR & REAL IDENTITY (SCAM-PROOF) -->
+    <section id="instructor" class="py-20 bg-slate-950/60 border-y border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-full gold-button flex items-center justify-center font-bold text-brand-dark text-xl shadow-lg">
-                        SZ
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Avatar / Visual Column -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden glass-card p-3 border-2 border-brand-gold/40 shadow-2xl gold-glow group">
+                        <img 
+                            src="favour-bathram.jpg" 
+                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800';" 
+                            alt="Favour Bathram - Lead Vocal & Speech Coach" 
+                            class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div class="absolute inset-x-3 bottom-3 p-4 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent rounded-b-2xl">
+                            <h3 class="text-lg font-bold text-white">Favour Bathram</h3>
+                            <p class="text-[11px] text-brand-gold font-semibold uppercase tracking-widest">Lead Vocal & Speech Coach</p>
+                        </div>
                     </div>
-                    <span class="text-xl font-bold tracking-wider gold-gradient-text">THE SPEAKER'S ZONE</span>
+
+                    <!-- Verified Social Badges -->
+                    <div class="flex items-center justify-center gap-4 mt-6">
+                        <a href="https://www.linkedin.com/in/favourbathram" target="_blank" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-300 hover:text-brand-gold hover:border-brand-gold transition-all" title="LinkedIn Profile">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1cmv5pw9o7/" target="_blank" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-300 hover:text-brand-gold hover:border-brand-gold transition-all" title="Facebook Profile">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://whatsapp.com/channel/0029Vb9SqU9CnA7ronwOKP3Q" target="_blank" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-all" title="WhatsApp Channel">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">About</a>
-                    <a href="#curriculum" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Curriculum</a>
-                    <a href="#testimonials" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Testimonials</a>
-                    <a href="#register" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Register</a>
-                    <a href="#pricing" class="text-slate-300 hover:text-brand-gold transition-colors text-sm font-medium">Pricing</a>
-                    <a href="#register" class="gold-button text-brand-dark font-semibold px-5 py-2.5 rounded-full text-sm">
-                        Enroll Now
-                    </a>
+
+                <!-- Bio Content Column -->
+                <div class="lg:col-span-7">
+                    <span class="text-xs font-bold tracking-widest text-brand-gold uppercase">Meet Your Instructor</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 mb-6">
+                        "Your voice is your greatest professional asset when trained correctly."
+                    </h2>
+                    
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                        Hello! I'm <strong>Favour Bathram</strong>, founder and lead coach at <strong>The Speaker's Zone</strong>.
+                    </p>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+                        I created this masterclass because I believe no one should lose career opportunities, pitch funding, or leadership respect simply because they felt nervous on stage or struggled to organize their thoughts under pressure.
+                    </p>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-8">
+                        My training framework focuses on immediate, practical growth rather than theoretical lectures. Every participant receives active practice, constructive speech critiques, and direct guidance throughout our cohort.
+                    </p>
+
+                    <!-- Trust Checklist -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-800 pt-6">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                            <span class="text-slate-300 text-xs sm:text-sm font-medium">Direct WhatsApp Support</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                            <span class="text-slate-300 text-xs sm:text-sm font-medium">Verified Professional Profiles</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                            <span class="text-slate-300 text-xs sm:text-sm font-medium">Recorded Live Sessions</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                            <span class="text-slate-300 text-xs sm:text-sm font-medium">Certificate of Completion</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-slate-300 hover:text-brand-gold focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: PROBLEM & SOLUTION -->
+    <section id="about" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase">Real Transformation</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Break Free From Speaking Barriers</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Designed specifically to bridge the gap between having great ideas and articulating them with authority.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Struggle 1 -->
+                <div class="glass-card glass-card-hover p-8 rounded-3xl">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-brand-gold mb-6 text-xl">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Stage Fear & Anxiety</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        Heart racing, shaking voice, or sudden memory blanks right before speaking. We provide somatic breathing routines to calm your nervous system instantly.
+                    </p>
+                </div>
+
+                <!-- Struggle 2 -->
+                <div class="glass-card glass-card-hover p-8 rounded-3xl">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-brand-gold mb-6 text-xl">
+                        <i class="fa-solid fa-comment-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Filler Words ("Um", "Ah")</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        Relying on "ums", "likes", and awkward pauses that weaken authority. Learn how strategic micro-pauses command attention and respect.
+                    </p>
+                </div>
+
+                <!-- Struggle 3 -->
+                <div class="glass-card glass-card-hover p-8 rounded-3xl">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-brand-gold mb-6 text-xl">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Disorganized Speech</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        Rambling or losing your train of thought mid-presentation. Master our proven 3-step narrative arc to structure any presentation in minutes.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: CURRICULUM -->
+    <section id="curriculum" class="py-24 bg-slate-950/70 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase">Syllabus Breakdown</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">4 Comprehensive Modules</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Step-by-step training engineered to turn hesitant presenters into articulate speakers.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Module 1 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-l-brand-gold">
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-wider block mb-2">Module 01</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Vocal Mechanics & Tone Mastery</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                        Discover diaphragmatic projection, vocal pitch modulation, and elimination of filler words for clear, authoritative speech.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> Diaphragmatic breathing exercises</li>
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> Pacing, cadence & vocal projection</li>
+                    </ul>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-l-brand-gold">
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-wider block mb-2">Module 02</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Speech Architecture & Storytelling</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                        Learn how to structure persuasive speeches, pitch decks, and presentations using magnetic opening hooks and clear closings.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> The 3-Step Narrative Structure</li>
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> Crafting compelling pitch presentations</li>
+                    </ul>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-l-brand-gold">
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-wider block mb-2">Module 03</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Anxiety Control & Stage Presence</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                        Gain total control over physiological nerves. Build posture, eye contact, and gestures that command audience attention.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> Somatic calming techniques</li>
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> Body language and stage positioning</li>
+                    </ul>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-l-brand-gold">
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-wider block mb-2">Module 04</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Impromptu Speaking & Live Capstone</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                        Think fast on your feet during unexpected Q&A sessions. Complete your live capstone presentation with personalized feedback from Favour.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> PREP model for rapid response</li>
+                        <li class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brand-gold"></i> Final Live Practical Review</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: INTERACTIVE CONFIDENCE QUIZ -->
+    <section id="assessment" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase">Diagnostic Quiz</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">What Is Your Public Speaking Profile?</h2>
+                <p class="text-slate-400 text-sm mt-2">Answer 3 simple questions to assess your current confidence level and growth roadmap.</p>
+            </div>
+
+            <div class="glass-card p-6 sm:p-10 rounded-3xl relative overflow-hidden border border-brand-gold/20" id="quiz-container">
+                
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-800 h-2 rounded-full mb-8 overflow-hidden">
+                    <div id="quiz-progress" class="gold-gradient-bg h-full w-1/3 transition-all duration-300"></div>
+                </div>
+
+                <!-- Step 1 -->
+                <div id="quiz-step-1" class="quiz-step">
+                    <span class="text-xs text-brand-gold font-bold uppercase tracking-wider">Question 1 of 3</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mt-2 mb-6">How do you feel when called upon to speak unexpectedly?</h3>
+                    <div class="space-y-3">
+                        <button onclick="answerQuiz(1, 'anxious')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>Severe nerves, heart pounds, or mind goes blank</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                        <button onclick="answerQuiz(1, 'moderate')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>Slightly nervous—I manage, but struggle with vocal fillers</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                        <button onclick="answerQuiz(1, 'confident')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>Fairly calm, but want to structure presentations better</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="quiz-step-2" class="quiz-step hidden">
+                    <span class="text-xs text-brand-gold font-bold uppercase tracking-wider">Question 2 of 3</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mt-2 mb-6">What is your primary speaking objective right now?</h3>
+                    <div class="space-y-3">
+                        <button onclick="answerQuiz(2, 'student')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>Academic presentations, defense, or student leadership</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                        <button onclick="answerQuiz(2, 'career')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>Job interviews, corporate meetings, or career growth</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                        <button onclick="answerQuiz(2, 'pitch')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>Pitching business ideas, grant applications, or keynotes</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="quiz-step-3" class="quiz-step hidden">
+                    <span class="text-xs text-brand-gold font-bold uppercase tracking-wider">Question 3 of 3</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mt-2 mb-6">How committed are you to practicing speaking skills this cohort?</h3>
+                    <div class="space-y-3">
+                        <button onclick="answerQuiz(3, 'high')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>100% ready to practice and receive constructive feedback</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                        <button onclick="answerQuiz(3, 'medium')" class="w-full p-4 text-left rounded-xl glass-card hover:border-brand-gold transition-all text-sm font-medium text-slate-200 flex items-center justify-between group">
+                            <span>Ready to attend live workshops and do basic exercises</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-gold"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Result -->
+                <div id="quiz-result" class="quiz-step hidden text-center py-4">
+                    <div class="w-16 h-16 rounded-full gold-gradient-bg flex items-center justify-center text-brand-dark text-2xl mx-auto mb-4 font-black">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase">Diagnostic Complete</span>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-3" id="quiz-title">High Growth Candidate</h3>
+                    <p class="text-slate-300 text-sm max-w-lg mx-auto mb-6 leading-relaxed" id="quiz-desc">
+                        You have great raw potential! With Favour's vocal mechanics and structural templates in Modules 1 & 3, you will build undeniable stage presence.
+                    </p>
+                    <button onclick="openRegistrationModal('Quiz Result CTA')" class="px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-brand-dark gold-gradient-bg hover:scale-105 transition-all shadow-lg">
+                        Claim Student Seat (₦50,000)
                     </button>
                 </div>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-amber-500/10 px-4 pt-2 pb-6 space-y-3">
-            <a href="#about" class="block text-slate-300 hover:text-brand-gold py-2">About</a>
-            <a href="#curriculum" class="block text-slate-300 hover:text-brand-gold py-2">Curriculum</a>
-            <a href="#testimonials" class="block text-slate-300 hover:text-brand-gold py-2">Testimonials</a>
-            <a href="#register" class="block text-slate-300 hover:text-brand-gold py-2">Register</a>
-            <a href="#pricing" class="block text-slate-300 hover:text-brand-gold py-2">Pricing</a>
-            <a href="#register" class="block w-full text-center gold-button text-brand-dark font-semibold py-3 rounded-full mt-4">
-                Enroll Now
-            </a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-36 pb-20 md:pt-48 md:pb-32 px-4 relative overflow-hidden">
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-amber-500/30 mb-8">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-xs uppercase tracking-widest text-amber-200 font-semibold">Special Student Discount Active</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-8">
-                Master Your Voice.<br>
-                <span class="gold-gradient-text">Command Every Room.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                Step into <strong class="text-white">The Speaker's Zone</strong>—an intensive, practical public speaking masterclass designed to turn public speaking anxiety into articulate, commanding executive presence.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#register" class="w-full sm:w-auto gold-button text-brand-dark font-bold px-8 py-4 rounded-full text-lg shadow-xl">
-                    Claim Discounted Seat (₦50,000)
-                </a>
-                <a href="#quiz" class="w-full sm:w-auto glass-card text-slate-200 hover:text-brand-gold border border-amber-500/20 font-semibold px-8 py-4 rounded-full text-lg transition-all">
-                    Take Speaking Assessment
-                </a>
-            </div>
-
-            <!-- Stats Bar -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-slate-800">
-                <div>
-                    <p class="text-3xl font-bold gold-gradient-text">100%</p>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Practical Exercises</p>
-                </div>
-                <div>
-                    <p class="text-3xl font-bold gold-gradient-text">Personalized</p>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Vocal Feedback</p>
-                </div>
-                <div>
-                    <p class="text-3xl font-bold gold-gradient-text">Small</p>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Focused Cohorts</p>
-                </div>
-                <div>
-                    <p class="text-3xl font-bold gold-gradient-text">Lifetime</p>
-                    <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Community Access</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Instructor Section -->
-    <section id="about" class="py-20 px-4 bg-slate-900/50 border-y border-amber-500/10">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="relative">
-                    <div class="w-full h-[450px] rounded-2xl overflow-hidden glass-card p-2 border border-amber-500/30">
-                        <img src="favour-bathram.jpg" onError="this.onerror=null;this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800';" alt="Favour Bathram" class="w-full h-full object-cover rounded-xl">
-                    </div>
-                    <div class="absolute -bottom-6 -right-6 glass-card p-4 rounded-xl border border-amber-500/30 hidden sm:block">
-                        <p class="text-xs text-slate-400">Founder & Lead Coach</p>
-                        <p class="text-lg font-bold gold-gradient-text">Favour Bathram</p>
-                    </div>
-                </div>
-                <div>
-                    <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest">Meet Your Instructor</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">Favour Bathram</h2>
-                    <p class="text-slate-300 leading-relaxed mb-4">
-                        Communication isn't just about speaking—it's about connection, clarity, and authority. I founded <strong>The Speaker's Zone</strong> to give professionals, students, and leaders a clear, practical framework to overcome stage anxiety and deliver presentations that move audiences.
-                    </p>
-                    <p class="text-slate-300 leading-relaxed mb-8">
-                        Through structured vocal delivery techniques, speech architecture, and live evaluation rubrics, you will learn to communicate your ideas with undeniable confidence.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.linkedin.com/in/favourbathram" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-brand-gold hover:border-amber-500/50 transition-all">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/1cmv5pw9o7/" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-brand-gold hover:border-amber-500/50 transition-all">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="https://whatsapp.com/channel/0029Vb9SqU9CnA7ronwOKP3Q" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-brand-gold hover:border-amber-500/50 transition-all">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                    </div>
-                </div>
+    <!-- SECTION 6: AUTHENTIC ALUMNI TESTIMONIALS -->
+    <section id="testimonials" class="py-24 bg-slate-950/60 border-y border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase">Student Feedback</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Real Practical Transformations</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Hear from past cohort participants who built their public speaking confidence with Favour Bathram.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Curriculum Syllabus -->
-    <section id="curriculum" class="py-20 px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest">Syllabus Breakdown</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mt-2">What You Will Master</h2>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-card p-8 rounded-2xl hover:border-amber-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-lg gold-button flex items-center justify-center text-brand-dark font-bold text-xl mb-6">01</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Vocal Delivery & Tonal Control</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm">Eliminate filler words, master pace and pitch modulation, and build resonance to hold attention effortlessly.</p>
-                </div>
-                <div class="glass-card p-8 rounded-2xl hover:border-amber-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-lg gold-button flex items-center justify-center text-brand-dark font-bold text-xl mb-6">02</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Presentation & Speech Architecture</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm">Structure compelling speeches, business presentations, and pitches using hook-and-anchor frameworks.</p>
-                </div>
-                <div class="glass-card p-8 rounded-2xl hover:border-amber-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-lg gold-button flex items-center justify-center text-brand-dark font-bold text-xl mb-6">03</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Overcoming Stage Anxiety & Body Language</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm">Control physiological anxiety, harness open body posture, and make powerful eye contact in any setting.</p>
-                </div>
-                <div class="glass-card p-8 rounded-2xl hover:border-amber-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-lg gold-button flex items-center justify-center text-brand-dark font-bold text-xl mb-6">04</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Impromptu Speaking & Live Evaluation</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm">Think on your feet during Q&A sessions and unscripted speeches with live video performance feedback.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Direct Email & WhatsApp Registration Form Section -->
-    <section id="register" class="py-20 px-4 bg-slate-900/50 border-y border-amber-500/10">
-        <div class="max-w-3xl mx-auto glass-card p-8 md:p-12 rounded-3xl border border-amber-500/30">
-            <div class="text-center mb-8">
-                <span class="text-brand-gold text-xs font-semibold uppercase tracking-widest">Reserve Your Spot</span>
-                <h2 class="text-2xl md:text-4xl font-bold text-white mt-2">Quick Registration</h2>
-                <p class="text-slate-300 text-sm mt-2">Enter your name and email below. Submitting will send your details to our inbox and redirect you directly to WhatsApp to complete your registration.</p>
-            </div>
-            
-            <form id="enrollment-form" action="https://formspree.io/f/xbgdzeeq" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-6">
-                <div>
-                    <label for="fullName" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" required placeholder="e.g. Favour Bathram" class="w-full bg-slate-900/80 border border-amber-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="yourname@example.com" class="w-full bg-slate-900/80 border border-amber-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
-                </div>
-                <div>
-                    <label for="tier" class="block text-sm font-medium text-slate-300 mb-2">Selected Option</label>
-                    <select id="tier" name="tier" class="w-full bg-slate-900/80 border border-amber-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
-                        <option value="Student Special (N50,000)">Student Special (₦50,000)</option>
-                        <option value="Standard Tuition (N100,000)">Standard Tuition (₦100,000)</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full gold-button text-brand-dark font-bold py-4 rounded-xl text-lg shadow-lg">
-                    Submit & Continue to WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Assessment Quiz -->
-    <section id="quiz" class="py-20 px-4 bg-slate-900/30">
-        <div class="max-w-3xl mx-auto glass-card p-8 md:p-12 rounded-3xl border border-amber-500/20">
-            <div class="text-center mb-8">
-                <span class="text-brand-gold text-xs font-semibold uppercase tracking-widest">Self-Diagnostic</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-white mt-2">Public Speaking Diagnostic Quiz</h2>
-            </div>
-            <div id="quiz-container">
-                <div id="question-box" class="space-y-6">
-                    <p id="quiz-question" class="text-lg font-medium text-slate-200"></p>
-                    <div id="quiz-options" class="space-y-3"></div>
-                </div>
-                <div id="quiz-result" class="hidden text-center space-y-6 pt-4">
-                    <h3 class="text-2xl font-bold gold-gradient-text" id="result-title"></h3>
-                    <p class="text-slate-300 text-sm leading-relaxed" id="result-desc"></p>
-                    <a href="#register" class="inline-block gold-button text-brand-dark font-bold px-8 py-3 rounded-full text-sm">
-                        Proceed to Registration Form
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest">Student Stories</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mt-2">What Participants Say</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl relative">
-                    <div class="flex text-brand-gold mb-4 text-sm">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        "The Speaker's Zone completely reshaped how I structure my presentations. The vocal feedback helped me overcome my stage anxiety."
-                    </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Testimonial 1 -->
+                <div class="glass-card glass-card-hover p-8 rounded-3xl flex flex-col justify-between">
                     <div>
-                        <h4 class="text-white font-bold">Student Participant</h4>
-                        <p class="text-xs text-slate-400">Masterclass Graduate</p>
+                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light italic">
+                            "Before attending The Speaker's Zone, presenting my final year project felt intimidating. Favour's vocal control techniques helped me eliminate filler words and speak with calm authority."
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                        <div class="w-10 h-10 rounded-full gold-gradient-bg text-slate-950 font-bold flex items-center justify-center text-xs">
+                            CO
+                        </div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Chinedu O.</h4>
+                            <p class="text-slate-400 text-xs">Final Year Student</p>
+                        </div>
                     </div>
                 </div>
-                <div class="glass-card p-8 rounded-2xl relative">
-                    <div class="flex text-brand-gold mb-4 text-sm">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        "I used to struggle with filler words during meetings. Favour's tonal control exercises made a visible difference in just weeks."
-                    </p>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card glass-card-hover p-8 rounded-3xl flex flex-col justify-between border border-brand-gold/30">
                     <div>
-                        <h4 class="text-white font-bold">Community Member</h4>
-                        <p class="text-xs text-slate-400">Beyond The Surface</p>
+                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light italic">
+                            "The speech architecture module gave me a structured template for work presentations. I no longer ramble during team meetings, and senior leads have noticed the improvement!"
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 text-white font-bold flex items-center justify-center text-xs border border-slate-600">
+                            AB
+                        </div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Amina B.</h4>
+                            <p class="text-slate-400 text-xs">Corporate Associate</p>
+                        </div>
                     </div>
                 </div>
-                <div class="glass-card p-8 rounded-2xl relative">
-                    <div class="flex text-brand-gold mb-4 text-sm">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        "Practical, direct, and actionable. The live speech practice sessions forced me out of my comfort zone in the best possible way."
-                    </p>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card glass-card-hover p-8 rounded-3xl flex flex-col justify-between">
                     <div>
-                        <h4 class="text-white font-bold">Masterclass Attendee</h4>
-                        <p class="text-xs text-slate-400">Public Speaking Cohort</p>
+                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light italic">
+                            "Favour's hands-on feedback during our practical sessions was gold. He pointed out small body language habits I never realized I had. Highly recommended masterclass!"
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 text-white font-bold flex items-center justify-center text-xs border border-slate-600">
+                            TE
+                        </div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Tunde E.</h4>
+                            <p class="text-slate-400 text-xs">Young Professional</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 px-4 bg-slate-900/50 border-t border-amber-500/10">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="text-brand-gold text-sm font-semibold uppercase tracking-widest">Masterclass Investment</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-white mt-2 mb-12">Enrollment Options</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 items-stretch">
-                <!-- Standard Tuition Card -->
-                <div class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+    <!-- SECTION 7: PRICING & COHORT TIER -->
+    <section id="pricing" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase">Transparent Tuition</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Enrollment & Pricing</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Genuine pricing designed to keep live cohort sizes focused and impactful.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Standard Tier -->
+                <div class="glass-card p-8 rounded-3xl relative border border-slate-800 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xl font-bold text-white mb-2">Standard Tuition</h3>
-                        <p class="text-slate-400 text-sm mb-6">Full Masterclass Access</p>
-                        <div class="text-4xl font-extrabold text-white mb-6">₦100,000</div>
-                        <ul class="text-left text-slate-300 space-y-3 text-sm mb-8">
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> All 4 Core Modules</li>
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> Live Vocal Feedback</li>
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> Course Handbooks & Rubrics</li>
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> Alumni Network Access</li>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">Standard Rate</span>
+                        <h3 class="text-2xl font-bold text-white mb-4">Professional Pass</h3>
+                        
+                        <div class="mb-6">
+                            <span class="text-4xl font-extrabold text-white">₦100,000</span>
+                            <span class="text-xs text-slate-400 block mt-1">Full Masterclass Access</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-gold"></i> All 4 Live Interactive Modules</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-gold"></i> Live Q&A and Practical Exercises</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-gold"></i> Course Slides & Presentation Templates</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-gold"></i> Certificate of Completion</li>
                         </ul>
                     </div>
-                    <a href="#register" class="glass-card border border-amber-500/30 text-slate-200 hover:text-brand-gold font-bold py-3 rounded-full text-sm block">
-                        Enroll Standard (₦100k)
-                    </a>
+
+                    <button onclick="openRegistrationModal('Standard Pass')" class="w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all">
+                        Register Standard (₦100,000)
+                    </button>
                 </div>
 
-                <!-- Student Discount Card -->
-                <div class="glass-card p-8 rounded-3xl border-2 border-brand-gold relative flex flex-col justify-between">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 gold-button text-brand-dark text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
-                        50% Student Discount
+                <!-- Featured Student Discount Tier -->
+                <div class="glass-card p-8 rounded-3xl relative border-2 border-brand-gold shadow-2xl gold-glow flex flex-col justify-between">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 gold-gradient-bg text-brand-dark text-[10px] font-extrabold uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
+                        Active Discount Offer
                     </div>
+
                     <div>
-                        <h3 class="text-xl font-bold text-white mb-2 mt-2">Student Special</h3>
-                        <p class="text-slate-400 text-sm mb-6">For Active Students & Early Applicants</p>
-                        <div class="text-4xl font-extrabold gold-gradient-text mb-2">₦50,000</div>
-                        <p class="text-xs text-slate-500 line-through mb-6">Standard Rate: ₦100,000</p>
-                        <ul class="text-left text-slate-300 space-y-3 text-sm mb-8">
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> Complete 4 Core Modules</li>
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> Live Vocal & Speech Feedback</li>
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> Course Handbooks & Materials</li>
-                            <li><i class="fas fa-check text-brand-gold mr-2"></i> Lifetime Community Access</li>
+                        <span class="text-xs font-bold text-brand-gold uppercase tracking-widest block mb-1">Special Discount</span>
+                        <h3 class="text-2xl font-bold text-white mb-4">Student & Early Cohort</h3>
+                        
+                        <div class="mb-6">
+                            <span class="text-xs text-slate-400 line-through mr-2">₦100,000</span>
+                            <span class="text-4xl sm:text-5xl font-extrabold gold-gradient-text">₦50,000</span>
+                            <span class="text-xs text-amber-300 block font-semibold mt-1">50% Off Limited Seat Pricing</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand-gold"></i> Everything in Standard Pass</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand-gold"></i> 1-on-1 Speech Review with Favour Bathram</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand-gold"></i> Direct Access to Alumni WhatsApp Group</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand-gold"></i> Priority Q&A Placement in Live Sessions</li>
                         </ul>
                     </div>
-                    <a href="#register" class="gold-button text-brand-dark font-bold py-3 rounded-full text-sm block shadow-lg">
-                        Claim Student Discount (₦50k)
-                    </a>
+
+                    <button onclick="openRegistrationModal('Student Discount Pass')" class="w-full py-4 rounded-full font-bold text-xs uppercase tracking-wider text-brand-dark gold-gradient-bg hover:scale-[1.02] transition-all shadow-lg">
+                        Claim Student Seat (₦50,000)
+                    </button>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-slate-800 text-center text-slate-400 text-sm">
-        <div class="max-w-6xl mx-auto space-y-6">
-            <div class="flex justify-center space-x-6">
-                <a href="https://www.linkedin.com/in/favourbathram" target="_blank" class="hover:text-brand-gold"><i class="fab fa-linkedin text-xl"></i></a>
-                <a href="https://www.facebook.com/share/1cmv5pw9o7/" target="_blank" class="hover:text-brand-gold"><i class="fab fa-facebook text-xl"></i></a>
-                <a href="https://whatsapp.com/channel/0029Vb9SqU9CnA7ronwOKP3Q" target="_blank" class="hover:text-brand-gold"><i class="fab fa-whatsapp text-xl"></i></a>
+    <!-- FOOTER & DIRECT CONTACT -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl gold-gradient-bg flex items-center justify-center text-brand-dark font-black text-base">
+                        <i class="fa-solid fa-crown text-slate-950"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-base tracking-wider text-white uppercase">The Speaker's <span class="gold-gradient-text">Zone</span></span>
+                        <span class="text-[10px] text-slate-400">Masterclass with Favour Bathram</span>
+                    </div>
+                </div>
+
+                <!-- Verified Social Media Directory Links -->
+                <div class="flex items-center gap-6">
+                    <a href="https://www.linkedin.com/in/favourbathram" target="_blank" class="text-slate-400 hover:text-brand-gold transition-colors flex items-center gap-2 text-xs font-semibold">
+                        <i class="fa-brands fa-linkedin-in text-base"></i> LinkedIn
+                    </a>
+                    <a href="https://www.facebook.com/share/1cmv5pw9o7/" target="_blank" class="text-slate-400 hover:text-brand-gold transition-colors flex items-center gap-2 text-xs font-semibold">
+                        <i class="fa-brands fa-facebook-f text-base"></i> Facebook
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb9SqU9CnA7ronwOKP3Q" target="_blank" class="text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 text-xs font-semibold">
+                        <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Channel
+                    </a>
+                </div>
+
             </div>
-            <p>&copy; The Speaker's Zone. Founded by Favour Bathram. All rights reserved.</p>
+
+            <div class="pt-8 border-t border-slate-900 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>&copy; 2026 The Speaker's Zone by Favour Bathram. All Rights Reserved.</p>
+                <p>Designed for GitHub Pages Deployment</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
-    <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const name = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const tier = document.getElementById('tier').value;
+    <!-- REGISTRATION MODAL -->
+    <div id="registration-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div class="glass-card max-w-lg w-full rounded-3xl p-6 sm:p-8 relative border border-brand-gold/30 shadow-2xl transform scale-95 transition-transform duration-300" id="modal-box">
+            
+            <button onclick="closeRegistrationModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-            // Submit form to Formspree in background
+            <div class="text-center mb-6">
+                <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Cohort Enrollment</span>
+                <h3 class="text-2xl font-bold text-white mt-1">Join The Speaker's Zone</h3>
+                <p class="text-slate-400 text-xs mt-1">Complete your registration details below.</p>
+            </div>
+
+            <form id="registration-form" action="https://formspree.io/f/xbgdzeeq" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+                    <input type="text" name="fullName" required placeholder="e.g. Favour Okon" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Select Tier</label>
+                    <select name="tier" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold transition-colors">
+                        <option>Student Discount Pass (₦50,000)</option>
+                        <option>Standard Professional Pass (₦100,000)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-brand-dark gold-gradient-bg hover:opacity-95 transition-all shadow-lg mt-2">
+                    Submit Registration & Chat on WhatsApp
+                </button>
+            </form>
+
+            <div id="modal-success" class="hidden text-center py-6">
+                <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 text-3xl flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-2">Registration Received!</h4>
+                <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                    Thank you! Your registration details have been sent to our email, and you can now connect directly on WhatsApp.
+                </p>
+                <a id="whatsapp-direct-link" href="https://wa.me/message/X36AXEWJA6F4K1" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-wider text-brand-dark gold-gradient-bg">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Connect Immediately on WhatsApp
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Mobile Navigation Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Quiz Logic
+        let quizAnswers = {};
+
+        function answerQuiz(step, value) {
+            quizAnswers[`step${step}`] = value;
+            
+            document.getElementById(`quiz-step-${step}`).classList.add('hidden');
+            const progressBar = document.getElementById('quiz-progress');
+
+            if (step < 3) {
+                document.getElementById(`quiz-step-${step + 1}`).classList.remove('hidden');
+                progressBar.style.width = `${((step + 1) / 3) * 100}%`;
+            } else {
+                progressBar.style.width = '100%';
+                document.getElementById('quiz-result').classList.remove('hidden');
+            }
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('registration-modal');
+        const modalBox = document.getElementById('modal-box');
+
+        function openRegistrationModal(source) {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalBox.classList.remove('scale-95');
+            modalBox.classList.add('scale-100');
+        }
+
+        function closeRegistrationModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+            
+            setTimeout(() => {
+                document.getElementById('registration-form').classList.remove('hidden');
+                document.getElementById('modal-success').classList.add('hidden');
+            }, 300);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const name = formData.get('fullName');
+            const email = formData.get('email');
+            const tier = formData.get('tier');
+
+            // Send email via Formspree in the background
             fetch(form.action, {
                 method: 'POST',
-                body: new FormData(form),
+                body: formData,
                 headers: { 'Accept': 'application/json' }
             });
 
-            // Redirect to WhatsApp with pre-filled message
-            const waMessage = `Hello Favour, I want to register for The Speaker's Zone Masterclass.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Option:* ${encodeURIComponent(tier)}`;
+            // Set custom pre-filled WhatsApp link
+            const waMessage = `Hello Favour, I just registered for The Speaker's Zone Masterclass on your website.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Selected Tier:* ${encodeURIComponent(tier)}`;
+            document.getElementById('whatsapp-direct-link').href = `https://wa.me/message/X36AXEWJA6F4K1?text=${waMessage}`;
+
+            // Show success popup and open WhatsApp tab
+            document.getElementById('registration-form').classList.add('hidden');
+            document.getElementById('modal-success').classList.remove('hidden');
             window.open(`https://wa.me/message/X36AXEWJA6F4K1?text=${waMessage}`, '_blank');
         }
-
-        const quizData = [
-            {
-                q: "When asked to speak unexpectedly, how do you typically feel?",
-                options: [
-                    "Extremely anxious; my heart races and I lose track of thoughts.",
-                    "Somewhat hesitant; I can speak, but I use many filler words.",
-                    "Confident; I enjoy impromptu speaking opportunities."
-                ]
-            },
-            {
-                q: "What area of public speaking do you wish to improve most?",
-                options: [
-                    "Vocal pace, tonal clarity, and confidence.",
-                    "Structuring my presentation so it flows logically.",
-                    "Engaging the audience and managing Q&A sessions effectively."
-                ]
-            }
-        ];
-
-        let currentQuestion = 0;
-        const qText = document.getElementById('quiz-question');
-        const qOptions = document.getElementById('quiz-options');
-        const qBox = document.getElementById('question-box');
-        const qResult = document.getElementById('quiz-result');
-
-        function loadQuestion() {
-            if (currentQuestion >= quizData.length) {
-                qBox.classList.add('hidden');
-                qResult.classList.remove('hidden');
-                document.getElementById('result-title').innerText = "Diagnostic Complete!";
-                document.getElementById('result-desc').innerText = "Your responses indicate that tailored vocal coaching and speech architecture training will help you overcome speaking barriers. Connect directly with Favour to discuss your custom training plan.";
-                return;
-            }
-            qText.innerText = quizData[currentQuestion].q;
-            qOptions.innerHTML = '';
-            quizData[currentQuestion].options.forEach((opt) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left glass-card p-4 rounded-xl text-sm text-slate-200 hover:border-amber-500/50 hover:text-brand-gold transition-all";
-                btn.innerText = opt;
-                btn.onclick = () => { currentQuestion++; loadQuestion(); };
-                qOptions.appendChild(btn);
-            });
-        }
-        loadQuestion();
-
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').onclick = function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        };
     </script>
 </body>
 </html>
